@@ -11,7 +11,6 @@ import (
 
 type FlightResponse struct {
 
-	Items Items `json:"items"`
 	Pagination Pagination `json:"pagination"`
 	Data []Flights `json:"data"`
 }
@@ -37,7 +36,7 @@ type Departure struct {
 	Icao string `json:"icao"`
 	Terminal interface{} `json:"terminal"`
 	Gate interface{} `json:"gate"`
-	Delay string `json:"delay"`
+	Delay interface{} `json:"delay"`
 	Scheduled time.Time `json:"scheduled"`
 	Estimated time.Time `json:"estimated"`
 	Actual interface{} `json:"actual"`
@@ -55,7 +54,7 @@ type Arrival struct {
 	Terminal interface{} `json:"terminal"`
 	Gate interface{} `json:"gate"`
 	Baggage string `json:"baggage"`
-	Delay string `json:"delay"`
+	Delay interface{} `json:"delay"`
 	Scheduled time.Time `json:"scheduled"`
 	Estimated time.Time `json:"estimated"`
 	Actual interface{} `json:"actual"`
@@ -85,13 +84,8 @@ type Pagination struct {
 
 }
 
-type Items struct {
-
-}
 
 func GetFlights(endpoint string, options map[string]string) (FlightResponse , error) {
-
-	fmt.Println("get flight data")
 
 	api_url := fmt.Sprintf("http://api.aviationstack.com/v1/%s",endpoint)
 
@@ -138,6 +132,8 @@ func GetFlights(endpoint string, options map[string]string) (FlightResponse , er
 		fmt.Println(err)
 		return FlightResponse{}, err
 	}
+
+	fmt.Println("flight response: ",	response)
 
 	return response, nil
 
