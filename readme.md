@@ -1,6 +1,5 @@
 
 ## About Flight Monitor
-<hr>
 This is a go project to monitor flight routes and other informations using websockets, go and vanilla javascript. 
 
 ## Why this project
@@ -14,6 +13,7 @@ Still tinkering with the go language whilst creating various case studies to und
 
 ## Requirements
 -   Docker installed
+-   Python installed
 -   You will need Go version 1.11+ installed on your development machine
 -   An Api key from https://aviationstack.com/. Create a free account to access key.
 
@@ -30,7 +30,7 @@ Run the command `mv .sample-env .env` and insert the apikey generated for you af
 ###  Have Docker installed? 
 -  `make build` to build image
 -  `make start` to run application
-
+-   `make start_web` to start web server
 ## Api calls
 `curl https://api.aviationstack.com/v1/flights?access_key=YOUR_ACCESS_KEY`
 
