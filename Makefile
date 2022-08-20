@@ -8,6 +8,8 @@ init:
 start: init dev
 	- @echo "All done..." 
 
+start_web:
+	- cd web && python3 -m http.server 9000
 
 stop: tear_down
 	- @echo "stopping flight monitor application"
