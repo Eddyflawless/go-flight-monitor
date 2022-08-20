@@ -1,5 +1,6 @@
+*env
+flight_output_example.json
 # Binaries for programs and plugins
-*.env
 *.exe
 *.exe~
 *.dll
