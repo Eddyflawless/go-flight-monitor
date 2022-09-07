@@ -1,0 +1,1 @@
+{"buildTargets":["build","dev","init","start","start_db","start_web","stop","swagger","tear_down"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

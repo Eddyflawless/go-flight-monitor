@@ -11,6 +11,9 @@ start: init dev
 start_web:
 	- cd web && python3 -m http.server 9000
 
+start_db:
+	- @docker-compose -f docker-compose.yaml  up
+
 stop: tear_down
 	- @echo "stopping flight monitor application"
 

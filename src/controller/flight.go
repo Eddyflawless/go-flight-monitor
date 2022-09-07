@@ -1,22 +1,53 @@
 package controller
 
 import (
-	"fmt"
-	"net/http"
-	"log"
+	"context"
 	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+
+	redis "github.com/Eddyflawless/flight-monitor/database"
 	flight "github.com/Eddyflawless/flight-monitor/flight"
 	websocket "github.com/Eddyflawless/flight-monitor/websocket"
 )
 
+var ctx = context.Background()
 
 func FlightHistory(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 
-		options := make(map[string]string)
+		// options := make(map[string]string)
+		// flightResponse, err := flight.GetFlights("flights", options)
 
-		flightResponse, err := flight.GetFlights("flights" , options)
+		id, ok := r.URL.Query()["id"]
+
+		if ok {
+
+			flight_id := id[0]
+			flightItem, err := flight.GetFlight(ctx, flight_id)
+
+			if err != nil {
+
+				log.Fatal(err)
+				w.WriteHeader(http.StatusNotFound)
+				w.Write([]byte("{}"))
+			}
+
+			flightBytes, err := json.Marshal(flightItem)
+
+			if err != nil {
+				log.Fatal(err)
+				w.Write([]byte("{}"))
+			}
+
+			w.Write(flightBytes)
+			return
+
+		}
+
+		flightResponse, err := flight.GetFlights(ctx)
 
 		if err != nil {
 			log.Fatal(err)
@@ -49,15 +80,28 @@ func FlightWs(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func IndexPage( w http.ResponseWriter, r *http.Request) {
+func IndexPage(w http.ResponseWriter, r *http.Request) {
 
-	if r.Method == "GET" {
-		fmt.Fprintf(w, "index page2..")
+	fmt.Println("controller-->", redis.DB)
+	w.Write([]byte("controller"))
 
-	}else{
-		w.WriteHeader(405)
-	
-		w.Write([]byte("Method not supported"))
-	}
+	// options := make(map[string]string)
+
+	// flightResponse, err := flight.GetFlights("flights" , options)
+
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// flights, err := json.Marshal(flightResponse)
+
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// fmt.Println(flightResponse)
+
+	// w.Header().Set("Content-Type", "application/json")
+	// w.Write(flights)
+
 }
-

@@ -40,7 +40,7 @@ Optional parameters:
 - callback = my_callback
 
 
-
+## Set Up
 
 ## Convert any json to go Struct
 I found an easy way to construct a struct from a json response. Visit https://mholt.github.io/json-to-go/ to see the tool.

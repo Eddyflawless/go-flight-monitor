@@ -1,15 +1,18 @@
 package main
 
-import(
+import (
 	"fmt"
+	"log"
 	"net/http"
-	"github.com/joho/godotenv"
+
 	config "github.com/Eddyflawless/flight-monitor/config"
 	controller "github.com/Eddyflawless/flight-monitor/controller"
-	"log"
+	redis "github.com/Eddyflawless/flight-monitor/database"
+	"github.com/Eddyflawless/flight-monitor/flight"
+	"github.com/joho/godotenv"
 )
 
-var configVar *config.ConfigVar 
+var configVar *config.ConfigVar
 
 func setupRoutes() {
 
@@ -19,10 +22,11 @@ func setupRoutes() {
 
 	port := fmt.Sprintf(":%s", configVar.Port)
 	log.Fatal(http.ListenAndServe(port, nil))
-	
+
 }
 
-func main() {
+func init() {
+	fmt.Println("init function...")
 
 	err := godotenv.Load(".env")
 
@@ -30,8 +34,20 @@ func main() {
 		log.Fatalf("Error loading environment variables: %s", err)
 	}
 
-	configVar = config.GetVariables()
+	rdb, err := redis.New()
 
+	if err != nil {
+		panic(err)
+	}
+
+	redis.DB = rdb
+
+	configVar = config.GetVariables()
+}
+
+func main() {
+
+	go flight.StartCron()
 	setupRoutes() // setupRoutes
 
 }
