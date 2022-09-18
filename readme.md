@@ -6,14 +6,12 @@ This is a go project to monitor flight routes and other informations using webso
 Still tinkering with the go language whilst creating various case studies to understand the language more. 
 
 ## Goals
-- Implement websockets with go and vanilla javascript
+- Implement websockets with Go and vanilla javascript
 - Scrap stats for flight using flight api and goroutine
 - Store historic flight data in a database like redis 
 - Learn swagger with Go
 
 ## Requirements
--   Docker installed
--   Python installed
 -   You will need Go version 1.11+ installed on your development machine
 -   An Api key from https://aviationstack.com/. Create a free account to access key.
 
