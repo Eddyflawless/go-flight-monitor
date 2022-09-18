@@ -22,8 +22,7 @@
 
         <div id="app">
             <div class="container">
-                <h2>Flight monitor2</h2>
-                <h4>{{ message }}
+                <h2>Flight monitor</h2>
 
                     <div class="card mt-5" >
 
@@ -38,22 +37,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
+
+                                    <tr v-for="flight in flights" @click="openFlighItem(flight)">
+                                        <td scope="row">
+                                            {{ flight.departure.airport }}
+                                        </td>
+                                        <td>
+                                            {{ flight.departure.airport }}
+                                        </td>
+                                        <td >
+                                            {{ flight.departure.airport }}
+                                        </td>
+                                        <td >
+                                            {{ flight.departure.airport }}
+                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>
