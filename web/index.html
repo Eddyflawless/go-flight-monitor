@@ -24,32 +24,63 @@
             <div class="container">
                 <h2>Flight monitor</h2>
 
+                <div class="card mt-5" v-if="flights.length == 0">
+                    <div class="card-body">
+                        <h4>No data</h4>
+                    </div>
+
+                </div>
+
                     <div class="card mt-5" >
 
                         <div class="card-body">
-                            <table class="table">
+
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Airline</th>
+                                    <th scope="col">Departure</th>
+                                    <th scope="col">Arrival</th>
+                                    <th scope="col">Flight #</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Flight Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
+
                                     <tr v-for="flight in flights" @click="openFlighItem(flight)">
                                         <td scope="row">
-                                            {{ flight.departure.airport }}
+                                            <strong>  {{ flight?.airline?.name }} /  {{ flight?.airline?.iata }}   </strong>
+
+                                        </td>
+                                        <td scope="row">
+                                            <strong>  {{ flight?.departure?.airport }} </strong>
+                                            <ul class="list-group list-group-flush "  v-if="flight.isShow">
+
+                                                <li class="list-group-item">Terminal : {{ notAvailableData(flight?.departure?.terminal)  }}</li>
+                                                <li class="list-group-item">Gate : {{  notAvailableData(flight?.departure?.gate)  }}</li>
+                                                <li class="list-group-item">Scheduled @ {{ notAvailableData(flight?.departure?.scheduled)  }}</li>
+                                            </ul>
+                                         
                                         </td>
                                         <td>
-                                            {{ flight.departure.airport }}
+                                            <strong>    {{ flight?.arrival?.airport }}    </strong>
+                                            <ul class="list-group list-group-flush " v-if="flight.isShow">
+                                                <li class="list-group-item">Terminal : {{ notAvailableData(flight?.arrival?.terminal)  }}</li>
+                                                <li class="list-group-item">Gate : {{ notAvailableData(flight?.arrival?.gate)  }}</li>
+                                                <li class="list-group-item">Estimated @ {{ notAvailableData(flight?.arrival?.estimated)  }}</li>
+                                            </ul>
                                         </td>
                                         <td >
-                                            {{ flight.departure.airport }}
+                                        {{ flight?.flight?.iata }}
                                         </td>
                                         <td >
-                                            {{ flight.departure.airport }}
+                                           <div v-if="flight?.flight_status == 'active'" class="badge bg-success "> {{ flight?.flight_status }} </div>
+                                           <div v-if="flight?.flight_status != 'active'" class="badge bg-secondary text-white"> {{ flight?.flight_status }} </div>
+                                        </td>
+                                        <td >
+                                            {{ flight?.flight_date }}
                                         </td>
 
                                     </tr>

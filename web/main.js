@@ -19,18 +19,32 @@ function bootstrapVue() {
         },
         methods: {
 
+
+            poplulateFlights(data){
+                if(!data) return
+
+                this.flights = data.map((flight, i) =>  { flight.isShow = false; flight.id = i+1; return flight} );
+
+                console.log(this.flights)
+
+            },
             async fetchInitalFlights(){
 
                 try{
 
-                    let response;
-                    response = await fetch("http://localhost:8081/flights");
-                    console.log("response: " ,response);
+                    let data;
+                    data = await fetch("http://localhost:8081/flights").then((response) => response.json());
+                    if(!data) return
+
+                    this. poplulateFlights(data)
 
                 }catch(e){
                     console.error("Failed to fetch init: " + e.message);
                 }
 
+            },
+            notAvailableData(field){
+                return field? field: "N/A";
             },
             setupWsListeners(){
 
@@ -41,17 +55,27 @@ function bootstrapVue() {
                 }
             },
             openFlighItem(flight){
-                console.log("-->", flight);
+                flight.isShow = !flight.isShow ;
             },
             wsOnOpen(event) {
                 console.log("connected...")
             },
             wsOnMessage(event) {
 
-                console.log("message received ==>: ", event)
-                const { data } = event;
-                this.flights = JSON.parse(data);
-                console.log(this.flights)
+                let data ;
+                try{
+
+                    console.log("message received ==>: ", event)
+                    const { data } = event;
+                    var parsedData = JSON.parse(data);                    
+                    this.poplulateFlights(parsedData)
+
+
+                }catch(e){
+                    console.log("error", e);
+                }finally{
+                    if(data) this.flights = data
+                }
             
             },
             wsOnerror(event) {

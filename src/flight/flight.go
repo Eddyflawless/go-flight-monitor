@@ -124,7 +124,6 @@ func GetFlight(ctx context.Context, id string) (Flights, error) {
 func createKey(flight Flights) string {
 
 	// airline.departure.desination
-
 	return fmt.Sprintf("%s.%s.%s", flight.Airline.Name, flight.Departure.Airport, flight.Arrival.Airport)
 
 }

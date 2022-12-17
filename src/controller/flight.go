@@ -7,7 +7,6 @@ import (
 	"log"
 	"net/http"
 
-	redis "github.com/Eddyflawless/flight-monitor/database"
 	flight "github.com/Eddyflawless/flight-monitor/flight"
 	websocket "github.com/Eddyflawless/flight-monitor/websocket"
 )
@@ -74,7 +73,6 @@ func FlightHistory(w http.ResponseWriter, r *http.Request) {
 
 func FlightWs(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Println("here..")
 	ws, err := websocket.Upgrade(w, r)
 
 	if err != nil {
@@ -87,26 +85,6 @@ func FlightWs(w http.ResponseWriter, r *http.Request) {
 
 func IndexPage(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Println("controller-->", redis.DB)
-	w.Write([]byte("controller"))
-
-	// options := make(map[string]string)
-
-	// flightResponse, err := flight.GetFlights("flights" , options)
-
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// flights, err := json.Marshal(flightResponse)
-
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fmt.Println(flightResponse)
-
-	// w.Header().Set("Content-Type", "application/json")
-	// w.Write(flights)
+	w.Write([]byte("health"))
 
 }

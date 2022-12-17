@@ -36,13 +36,12 @@ func Writer(conn *websocket.Conn) {
 
 	for {
 
-		ticker := time.NewTicker(time.Second * 10) // every 10 seconds
+		ticker := time.NewTicker(time.Second * 300) // every 300 seconds | 5 minutes
 
 		for t := range ticker.C {
 
 			fmt.Println("updating subscribed views", t)
 			// options := make(map[string]string)
-
 			// flightResponse, err := flight.GetFlights("flights" , options)
 			flightResponse, err := flight.GetFlights(ctx)
 
@@ -55,10 +54,7 @@ func Writer(conn *websocket.Conn) {
 			if err != nil {
 				panic(err)
 			}
-
-			//save to database
 			fmt.Println(ctx)
-			// flight.SaveFlights(ctx,flights)
 
 			if err = conn.WriteMessage(websocket.TextMessage, []byte(flights)); err != nil {
 				fmt.Println("error writing message", err)

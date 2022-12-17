@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sun Sep 18 16:42:48 2022
+# Make data base, printed on Sat Dec 17 04:19:48 2022
 
 # Variables
 
@@ -47,19 +47,20 @@ VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = /opt/local/bin:/opt/local/sbin:/Users/mac/.nvm/versions/node/v18.6.0/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/anaconda3/bin:/Users/mac/.cargo/bin:/Users/mac/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/local/go/bin:/opt/X11/bin:/usr/local/opt/liquibase:/usr/local/mysql/bin
+PATH = /opt/local/bin:/opt/local/sbin:/Users/mac/.nvm/versions/node/v16.17.0/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/anaconda3/bin:/Users/mac/.cargo/bin:/Users/mac/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/local/go/bin:/opt/X11/bin:/usr/local/opt/liquibase:/usr/local/mysql/bin
+ 
 # environment
 GOPATH = /Users/mac/go
 # environment
-NVM_BIN = /Users/mac/.nvm/versions/node/v18.6.0/bin
+NVM_BIN = /Users/mac/.nvm/versions/node/v16.17.0/bin
 # environment
-LaunchInstanceID = D8E642F1-E164-4E21-927F-F7D0AB2835D7
+LaunchInstanceID = 34169935-F26C-4B92-B9BA-745F70B5DF49
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.KH1pbYDhAl/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.eJACDNQfdv/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -77,7 +78,7 @@ HOME = /Users/mac
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/mac/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = /Users/mac/Library/Application Support/Code/CachedData/74b1f979648cc44d385a2286793c226e611f59e7
 # environment
 LOGNAME = mac
 # environment
@@ -121,7 +122,7 @@ TMPDIR = /var/folders/gk/bfnqbm5d26xdvv_nr2y51mpm0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/mac/Library/Application Support/Code/1.69.2-main.sock
+VSCODE_IPC_HOOK = /Users/mac/Library/Application Support/Code/1.71.2-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
@@ -133,12 +134,11 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/mac/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.108797297.108797303
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.115986571.115986577
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
- 
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x52
 # environment
@@ -152,7 +152,7 @@ LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /opt/anaconda3/bin/python
 # environment
-SECURITYSESSIONID = 186a5
+SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -166,7 +166,7 @@ MAKELEVEL := 0
 # environment
 CONDA_PREFIX = /opt/anaconda3
 # environment
-VSCODE_PID = 409
+VSCODE_PID = 459
 # environment
 _CE_CONDA = 
 # environment
@@ -229,7 +229,6 @@ start_web:
 	- cd web && python3 -m http.server 9000
 	
 
- 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
@@ -308,6 +307,6 @@ init:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Sep 18 16:42:48 2022
+# Finished Make data base on Sat Dec 17 04:19:48 2022
 
  

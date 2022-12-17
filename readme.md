@@ -40,5 +40,8 @@ Optional parameters:
 
 ## Set Up
 
+## Grabs
+![Screen grab](sc-001.png)
+
 ## Convert any json to go Struct
 I found an easy way to construct a struct from a json response. Visit https://mholt.github.io/json-to-go/ to see the tool.

@@ -9,17 +9,15 @@ import (
 	"net/http"
 	"os"
 	"time"
-
-	config "github.com/Eddyflawless/flight-monitor/config"
 )
 
 var ctx = context.Background()
 
-func scrapeThirdPartyEnpoint(endpoint string, options map[string]string) (FlightResponse, error) {
+func scrapeThirdPartyEndpoint(endpoint string, options map[string]string) (FlightResponse, error) {
 
-	// api_url := fmt.Sprintf("http://api.aviationstack.com/v1/%s", endpoint)
+	api_url := fmt.Sprintf("http://api.aviationstack.com/v1/%s", endpoint)
 
-	api_url := fmt.Sprintf("%s/%s", config.GetVariables().ApiUrlDev, endpoint)
+	// api_url := fmt.Sprintf("%s/%s", config.GetVariables().ApiUrlDev, endpoint)
 
 	fmt.Printf("endpoint: %s\n", endpoint)
 	fmt.Printf("accessing %v \n", api_url)
@@ -77,13 +75,13 @@ func StartCron() {
 
 	for {
 
-		ticker := time.NewTicker(time.Second * 120) // every x seconds
+		ticker := time.NewTicker(time.Second * 300) // every x seconds
 
 		for t := range ticker.C {
 			options := make(map[string]string)
 
 			// scrap flight and insert into database
-			flightResponse, err := scrapeThirdPartyEnpoint("flights", options)
+			flightResponse, err := scrapeThirdPartyEndpoint("flights", options)
 
 			if err != nil {
 				log.Fatal(err)

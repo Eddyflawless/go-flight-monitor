@@ -21,12 +21,11 @@ func setupRoutes() {
 	http.HandleFunc("/flights", controller.FlightHistory)
 
 	port := fmt.Sprintf(":%s", configVar.Port)
-	log.Fatal(http.ListenAndServe(port, nil))
+	log.Println(http.ListenAndServe(port, nil))
 
 }
 
 func init() {
-	fmt.Println("init function...")
 
 	err := godotenv.Load(".env")
 
